@@ -35,6 +35,9 @@ METADATA_INSTANCES_COUNT = prometheus_client.Gauge(
     "bg_metadata_instances_count", "Number of metadata actively used"
 )
 
+# ignore points more recent than this number of seconds in the past
+IGNORE_WINDOW = 60
+
 
 class Error(Exception):
     """Base class for all exceptions from this module."""
@@ -440,7 +443,7 @@ class Stage(object):
         return bg_utils.round_down(timestamp, self.precision)
 
     def round_up(self, timestamp):
-        """Round down a timestamp to a multiple of the precision."""
+        """Round up a timestamp to a multiple of the precision."""
         return bg_utils.round_up(timestamp, self.precision)
 
     def step(self, timestamp):
@@ -581,7 +584,7 @@ class Retention(object):
         if shift:
             oldest_timestamp = now - stage.duration
             start_time = max(start_time, oldest_timestamp)
-        start_time = min(now, start_time)
+        start_time = min(now - IGNORE_WINDOW, start_time)
         start_time = stage.round_down(start_time)
 
         end_time = min(now, end_time)

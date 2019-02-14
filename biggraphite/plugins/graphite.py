@@ -261,7 +261,7 @@ class Reader(BaseReader):
 class Finder(BaseFinder):
     """Finder plugin for BigGraphite."""
 
-    local = False
+    local = True
 
     def __init__(
         self, directories=None, accessor=None, metadata_cache=None, carbonlink=None

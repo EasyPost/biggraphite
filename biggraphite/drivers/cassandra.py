@@ -1254,7 +1254,7 @@ class _CassandraAccessor(bg_accessor.Accessor):
             UPDATE_READ_ON_METADATA,
             __prepare(
                 'UPDATE "%s".metrics_metadata SET read_on=now()'
-                " WHERE name=?;" % self.keyspace_metadata
+                " WHERE name=? IF EXISTS;" % self.keyspace_metadata
             )
         )
         self.__delete_metric = _CassandraExecutionRequest(
@@ -1663,8 +1663,10 @@ class _CassandraAccessor(bg_accessor.Accessor):
         return res
 
     def _update_metric_read_on(self, metric_name):
-        rate = int(1 / self.__read_on_sampling_rate)
+        if self.__read_on_sampling_rate == 0:
+            return
 
+        rate = int(1 / self.__read_on_sampling_rate)
         skip = self.__read_on_counter % rate > 0
         self.__read_on_counter += 1
 

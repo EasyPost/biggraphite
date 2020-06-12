@@ -6,18 +6,18 @@ scandir
 tabulate
 
 # Command line web
-gourde
+gourde==0.2.1
 
 # Memory driver
 sortedcontainers
 
 # Cassandra driver
-cassandra-driver
+cassandra-driver==3.17.1
 scales
 
 # ElasticSearch
-elasticsearch
-elasticsearch-dsl
+elasticsearch<7.0.0,>=6.0.0
+elasticsearch-dsl<7.0.0,>=6.0.0
 # To support https
 certifi
 
@@ -31,6 +31,14 @@ prometheus_client==0.5.0
 
 # Metadata cache
 lmdb
+
+# Python 2.x compatibility
+cairocffi==0.9.0
+contextlib2; python_version < '3'
+futures; python_version < '3'
+ipaddress; python_version < '3'
+
+enum34; python_version < '3.4'
 
 # Optional, for bgutil shell:
 # ipython

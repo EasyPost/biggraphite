@@ -7,6 +7,49 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.14.15] - 2020-02-14
+
+### Fixed
+
+ - Add import of distutils.util to settings.py fixing missing module error
+
+## [0.14.14] - 2019-06-12
+
+### Fixed
+
+ - Freeze cassandra-driver to version to 3.17.1
+ - Constrain elasticsearch-dsl to versions <7.0.0,>=6.0.0
+
+### Improved
+
+  - Creation rate of metadata configurable
+  - Ability to disable metadata creation at runtime
+
+## [0.14.13] - 2019-04-12
+
+### Fixed
+
+ - Version binding of dependencies to stay python 2.x compatible
+ - Freeze gourde version to 0.2.1
+
+## [0.14.12] - 2019-04-01
+
+### Improved
+
+ - Add tracing on the graphite plugin interface
+ - Align the way to update metadata in Elasticsearch with Cassandra
+ - Setting BG_CASSANDRA_READ_ON_SAMPLING_RATE to 0 skips updating the read_on
+
+### Fixed
+
+ - Do not update read_on if the metric is not present
+
+## [0.14.11] - 2019-02-27
+
+### Improved
+
+- Add new configuration keys to Elasticsearch driver
+
 ## [0.14.10] - 2019-02-19
 
 ### Improved
@@ -485,7 +528,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 - We are going to do releases from now on
 
-[Unreleased]: https://github.com/criteo/biggraphite/compare/v0.14.10...HEAD
+[Unreleased]: https://github.com/criteo/biggraphite/compare/v0.14.14...HEAD
+[0.14.14]: https://github.com/criteo/biggraphite/compare/v0.14.13...v0.14.14
+[0.14.13]: https://github.com/criteo/biggraphite/compare/v0.14.12...v0.14.13
+[0.14.12]: https://github.com/criteo/biggraphite/compare/v0.14.11...v0.14.12
+[0.14.11]: https://github.com/criteo/biggraphite/compare/v0.14.10...v0.14.11
 [0.14.10]: https://github.com/criteo/biggraphite/compare/v0.14.9...v0.14.10
 [0.14.9]: https://github.com/criteo/biggraphite/compare/v0.14.8...v0.14.9
 [0.14.8]: https://github.com/criteo/biggraphite/compare/v0.14.7...v0.14.8

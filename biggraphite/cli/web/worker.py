@@ -108,6 +108,14 @@ class BgUtilTask:
         self.result = result
         self.status = BgUtilTaskStatus.TIMED_OUT
 
+    def is_finished(self):
+        """Is the task finished."""
+        return self.status not in [
+            BgUtilTaskStatus.CREATED,
+            BgUtilTaskStatus.SUBMITTED,
+            BgUtilTaskStatus.STARTED
+        ]
+
 
 class BgUtilTaskStatus(enum.Enum):
     """Status of a BgUtilTask."""
